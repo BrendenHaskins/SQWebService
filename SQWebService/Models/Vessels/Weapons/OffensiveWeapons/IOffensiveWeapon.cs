@@ -2,6 +2,5 @@
 {
     public interface IOffensiveWeapon : IWeapon
     {
-        //what exactly do offensive weapons do?
     }
 }
