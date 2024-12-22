@@ -2,6 +2,7 @@
 {
     public class VesselCommon
     {
+        public const int VESSEL_NON_SEED_ATTRIBUTE_COUNT = 6;
         public enum VesselClass
         {
             Aircraft = 0,
@@ -34,5 +35,45 @@
                 throw new Exception("No such vessel class: " + vesselClass);
             }
         }
+
+        public string GenerateSeed(Vessel Vessel)
+        {
+            string output = "";
+            output += $"{Vessel.Id},";
+            output += $"{Vessel.Name},";
+            output += $"{Vessel.VesselClass},";
+            output += $"{Vessel.EngineCount},";
+            output += $"{Vessel.SensorRange},";
+            output += $"{Vessel.Armor}";
+
+            return output;
+        }
+
+        public Vessel GenerateVessel(string Seed)
+        {
+            //each seed is seperated by commas, which cannot appear in any property except for the name.
+            string[] propertiesArr = Seed.Split(',');
+            var properties = new List<string>(propertiesArr);
+
+            //splitting by commas may seperate names into multiple strings, combine them until count normalizes.
+            while (properties.Count > VESSEL_NON_SEED_ATTRIBUTE_COUNT) {
+                properties[1] = properties[1] + properties[2];
+                properties.RemoveAt(2);
+            }
+
+            int[] attributeParsed = new int[VESSEL_NON_SEED_ATTRIBUTE_COUNT];
+
+            for (int i = 0; i < properties.Count; i++)
+            { 
+                if (i != 1)
+                {
+                    attributeParsed[i] = int.Parse(properties[i]);
+                }
+            }
+
+            return new Vessel(attributeParsed[0], properties[1], attributeParsed[1], attributeParsed[2], attributeParsed[3], attributeParsed[4]);
+        }
+
+
     }
 }

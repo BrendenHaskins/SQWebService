@@ -2,6 +2,7 @@
 {
     public interface IDefensiveWeapon : IWeapon
     {
-        //not sure what a defensive weapon does
+        string Name { get; set; }
+        string ShortHand { get; set; }
     }
 }
