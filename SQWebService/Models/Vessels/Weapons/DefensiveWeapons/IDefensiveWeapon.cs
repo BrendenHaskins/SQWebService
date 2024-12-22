@@ -2,7 +2,7 @@
 {
     public interface IDefensiveWeapon : IWeapon
     {
-        string Name { get; set; }
-        string ShortHand { get; set; }
+        string Description { get; }
+
     }
 }

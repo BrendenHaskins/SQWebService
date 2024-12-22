@@ -5,5 +5,8 @@
     public interface IOffensiveWeapon : IWeapon
     {
         bool IsOverSizable { get; }
+        public int CloseRange { get; }
+        public int Damage { get; }
+        public string HitType { get; }
     }
 }

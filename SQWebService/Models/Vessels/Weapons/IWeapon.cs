@@ -12,12 +12,9 @@
 
     public interface IWeapon
     {
-        string Name { get; }
-        string Shorthand { get; set; }
-        char Size { get; set; }
-        int Range { get; set; }
-        int CloseRange { get; set; }
-        int Damage { get; set; }
-        string HitType { get; set; }
+        public string Name { get; }
+        public string Shorthand { get; }
+        public char Size { get; }
+        public int Range { get; }
     }
 }
