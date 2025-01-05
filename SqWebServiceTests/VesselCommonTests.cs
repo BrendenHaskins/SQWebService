@@ -14,8 +14,7 @@ namespace SQWebService.UnitTests
         public void GenerateNames_VesselIsValid_ReturnsString()
         {
 
-            var allValidVesselClassses = VesselCommon.namingLists.Keys;
-            var allowedNames = VesselCommon.namingLists.Values;
+            var allValidVesselClassses = VesselCommon.namingLists.Keys
             var names = new List<string>();
 
             foreach (string vesselClass in allValidVesselClassses)
@@ -36,7 +35,7 @@ namespace SQWebService.UnitTests
         [TestMethod]
         public void GenerateSeed_VesselIsValidWithNoWeapons_SeedGeneratedCopySeedEqualsOriginalSeed()
         {
-            Vessel testVessel = new Vessel(001, "Screaming Eagle", 1, 3, 8, 12, 10);
+            Vessel testVessel = new (001, "Screaming Eagle", 1, 3, 8, 12, 10);
             Vessel seededVessel = Vessel.GenerateVesselFromSeed(testVessel.Seed);
 
             Assert.IsNotNull(seededVessel);
@@ -50,14 +49,14 @@ namespace SQWebService.UnitTests
 
             OffensiveWeapons.Add( (IOffensiveWeapon) WeaponCommon.GenerateWeaponFromShorthand("S1"));
             DefensiveWeapons.Add((IDefensiveWeapon)WeaponCommon.GenerateWeaponFromShorthand("D1"));
-            Vessel testVessel = new Vessel(001, "Screaming Eagle", 1, 3, 8, 12, 10, OffensiveWeapons, DefensiveWeapons);
+            Vessel testVessel = new (001, "Screaming Eagle", 1, 3, 8, 12, 10, OffensiveWeapons, DefensiveWeapons);
             Vessel seededVessel = Vessel.GenerateVesselFromSeed(testVessel.Seed);
 
             Assert.IsNotNull(seededVessel);
             Assert.AreEqual(seededVessel.Seed, testVessel.Seed);
         }
         [TestMethod]
-        public void GenerateSeed_VesselIsValidWithInvalidWeapons_ThrowsException()
+        public void GenerateWeaponFromShorthand_VesselIsValidWithInvalidWeapons_ThrowsException()
         {
             var OffensiveWeapons = new List<IOffensiveWeapon>();
 
