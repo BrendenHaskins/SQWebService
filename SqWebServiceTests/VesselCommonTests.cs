@@ -57,10 +57,12 @@ namespace SQWebService.UnitTests
             Assert.AreEqual(seededVessel.Seed, testVessel.Seed);
         }
         [TestMethod]
-        public void Driver_Test_SeedGen()
+        public void GenerateSeed_VesselIsValidWithInvalidWeapons_ThrowsException()
         {
-            FleetExport.Main();
-            Assert.IsTrue(true);
+            var OffensiveWeapons = new List<IOffensiveWeapon>();
+
+            Assert.ThrowsException<Exception>(() => OffensiveWeapons.Add((IOffensiveWeapon)WeaponCommon.GenerateWeaponFromShorthand("X1")));
+            
         }
     }
 }

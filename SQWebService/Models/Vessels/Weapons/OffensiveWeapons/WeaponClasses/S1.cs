@@ -1,4 +1,4 @@
-namespace SQWebService.Models.Vessels.Weapons.OffensiveWeapons
+namespace SQWebService.Models.Vessels.Weapons.OffensiveWeapons.WeaponClasses
 {
     /// <summary>S1 shorthand represents the 75mm Cannon</summary
     public class S1 : IOffensiveWeapon
@@ -10,7 +10,7 @@ namespace SQWebService.Models.Vessels.Weapons.OffensiveWeapons
         public int Range { get => 24; }
         public int CloseRange { get => 8; }
         public int Damage { get => 2; }
-        public string HitType { get => "Roll D6: Hits on evens (2,4,6)"; }
+        public string HitType { get => WeaponCommon.EVEN_DAMAGE_TYPE; }
         public bool IsOverSizable { get => true; }
     }
 }
